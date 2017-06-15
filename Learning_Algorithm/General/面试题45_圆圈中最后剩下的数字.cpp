@@ -43,7 +43,7 @@ int getLastNumber(int n, int m)
 		//numbersList.erase(current);
 		//current = next;
 		// 或者 方法2
-		current = numbersList.erase(current);// OR numbersList.erase(current++);
+		current = numbersList.erase(current);// OR numbersList.erase(current++);其中，pos = current++;
 		if (current == numbersList.end())
 			current = numbersList.begin();
 	}
