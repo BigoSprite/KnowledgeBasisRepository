@@ -1,10 +1,10 @@
 /*
-	������21������min������ջ
+	面试题21：包含min函数的栈
 
-	��Ŀ������һ��ջ���ݽṹ����д���ڸ��������ܹ��õ�ջ����СԪ�صĺ�����
-		 �ڸ�ջ�У�����min��push��pop��ʱ�临�Ӷȶ���O(1)��
+	题目：定义一个栈数据结构，请写出在该类型中能够得到栈的最小元素的函数。
+		 在该栈中，调用min、push及pop的时间复杂度都是O(1)。
 
-    ˼·������ջm_data��������ݣ�����һ������ջm_min�������СԪ�ء�
+        思路：数据栈m_data来存放数据；另加一个辅助栈m_min来存放最小元素。
 */
 
 #include <stack>
@@ -18,11 +18,11 @@ private:
 	std::stack<T> m_min;
 
 public:
-	// ѹ��ջ
+	// 压入栈
 	void push(const T& value);
-	// ɾ��ջ��Ԫ��
+	// 删除栈顶元素
 	void pop();
-	// �����СԪ��
+	// 获得最小元素
 	void min();
 };
 
