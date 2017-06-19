@@ -1,11 +1,11 @@
 /*
-	������15�������ĵ�����k���ڵ�
+	面试题15：链表的倒数第k个节点
 
-	��Ŀ������һ������������������ĵ�����k���ڵ㡣Ϊ�˷��ϴ�����˵�ϰ�ߣ������1��ʼ������
-		 ��������β�ڵ��ǵ�����1���ڵ㡣�磺1->2->3->4->5->6�ĵ�����3���ڵ���4��
+	题目：输入一个链表，输出该链表的倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，
+		 即链表的尾节点是倒数第1个节点。如：1->2->3->4->5->6的倒数第3个节点是4。
 
-    ˼·��ά������ָ��A��B����A��B֮���k-1����
-		 ����A��k-1����Ȼ��B����ͷ�ڵ�λ�ã���Aһ���ߣ�ֱ��A����β�ڵ�ʱ��Bָ��Ľڵ㼴Ϊ����
+    	思路：维护两个指针A和B；让A和B之间差k-1步。
+		 先让A走k-1步，然后B放在头节点位置，和A一起走；直到A到达尾节点时，B指向的节点即为所求。
 */
 #include <iostream>
 #include <assert.h>
@@ -16,27 +16,28 @@ struct Node
 };
 
 /*
- * ���ܣ������ĵ�����k���ڵ�
- * @param pHead ָ������ͷ�ڵ��ָ��
- * @param k ������k���ڵ�
+ * 功能：链表的倒数第k个节点
+ * @param pHead 指向链表头节点的指针
+ * @param k 倒数第k个节点
  *
- * ʱ�临�Ӷȣ�O(N)������Ҫ����һ��������
+ * 时间复杂度：O(N)；仅需要遍历一遍链表。
  */
 Node* getKthNodeToTail(Node* pHead, unsigned int k) 
 {
+	// 永远不要忘记：首先进行鲁棒性检查！
 	if (pHead == NULL || k < 0)
 		return NULL;
 
-	Node*  A = pHead;// ��һ��ָ������k-1��
+	Node*  A = pHead;// 第一个指针先走k-1步
 	for (int i = 0; i < k - 1; ++i) {
 		if (A->m_pNext != NULL)
 			A = A->m_pNext;
-		else// ������β�ڵ㣬��Ϊ�����ĳ��ȣ�k
+		else// 到达了尾节点，因为链表的长度＜k
 			return NULL;
 	}
 
-	Node* B = pHead;// �ڶ���ָ��
-	while (A->m_pNext != NULL)// �ڶ�ָ���ߵ�β�ڵ�ʱֹͣ
+	Node* B = pHead;// 第二个指针
+	while (A->m_pNext != NULL)// 第二指针走到尾节点时停止
 	{
 		B = B->m_pNext;
 		A = A->m_pNext;
