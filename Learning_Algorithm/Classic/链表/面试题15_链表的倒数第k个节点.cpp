@@ -24,6 +24,7 @@ struct Node
  */
 Node* getKthNodeToTail(Node* pHead, unsigned int k) 
 {
+	// 永远不要忘记：首先进行鲁棒性检查！
 	if (pHead == NULL || k < 0)
 		return NULL;
 
