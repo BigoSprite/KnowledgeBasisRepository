@@ -39,6 +39,7 @@ void deleteDuplication(Node** pHead)//！！！传入Node* pHead也对？？？
 	// 边界条件检查
 	if (pHead == NULL || *pHead == NULL)
 		return;
+	
 	// 指向前驱节点及当前节点的指针
 	Node* pPreNode = NULL;
 	Node* pCurrentNode = *pHead;
@@ -65,7 +66,7 @@ void deleteDuplication(Node** pHead)//！！！传入Node* pHead也对？？？
 				pToBeDel = next;
 			}
 
-			// 判断是否删除的时头节点
+			// ！！！判断是否删除的时头节点
 			if (pPreNode == NULL) // 是的
 				*pHead = next;// ！！！记得维护头节点 pHead
 			else
