@@ -71,10 +71,10 @@ bool isBalancedTree_best(TreeNode* pRoot)
 	return isBalancedTree(pRoot, &depth);
 }
 
-bool isBalancedTree(TreeNode* pRoot, int* depth)
+bool isBalancedTree(TreeNode* pRoot, int* depth)// ！！！记录每个节点的深度
 {
 	if(pRoot == NULL){
-		*depth = 0;
+		*depth = 0;// ！！！记录每个节点的深度
 		return true;
 	}
 	
@@ -85,7 +85,7 @@ bool isBalancedTree(TreeNode* pRoot, int* depth)
 		// 记录根节点的深度
 		int diff = right - left;
 		if(diff <= 1 && diff >= -1){
-			*depth = 1 + (left > right? left + 1: right + 1);
+			*depth = 1 + (left > right? left: right);
 			return true;
 		}
 	}
