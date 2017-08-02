@@ -38,15 +38,19 @@ bool hasSubtree(TreeNode* pRootA, TreeNode* pRootB)
 
 bool doesTreeAHasTreeB(TreeNode* pRootA, TreeNode* pRootB)
 {
+	// 边界条件检查
 	if (pRootB == NULL)
 		return true;
 	if (pRootA == NULL)
 		return false;
 
+	// 根——判断对应节点的值是否相同
 	if (pRootA->m_nValue != pRootB->m_nValue)
 		return false;
 
+	// 左
 	bool isLeft = doesTreeAHasTreeB(pRootA->m_pLeft, pRootB->m_pLeft);
+	// 右 
 	bool isRight = doesTreeAHasTreeB(pRootA->m_pRight, pRootB->m_pRight);
 
 	return isLeft && isRight;

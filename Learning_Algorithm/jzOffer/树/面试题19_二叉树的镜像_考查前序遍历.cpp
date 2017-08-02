@@ -15,25 +15,24 @@ struct TreeNode
 	TreeNode m_pRight;
 };
 
-void mirrorTree_Recursively(TreeNode pRoot)
+void mirrorTree_Recursively(TreeNode* pRoot)
 {
-	 边界条件检查
-	if (pRoot == NULL)
+	// 边界条件
+	if(pRoot == NULL)
 		return;
-
-	 只有一个节点的情况
-	if (pRoot-m_pLeft == NULL && pRoot-m_pRight == NULL)
+	if(!pRoot->m_pLeft && !pRoot->m_pRight)
 		return;
-
-	 左右子树至少有一个存在
-	 根---交换左右子节点
-	TreeNode treeNode = pRoot-m_pLeft;
-	pRoot-m_pLeft = pRoot-m_pRight;
-	pRoot-m_pRight = treeNode;
-	 左
-	if (pRoot-m_pLeft != NULL)
-		mirrorTree_Recursively(pRoot-m_pLeft);
-	 右
-	if (pRoot-m_pRight != NULL)
-		mirrorTree_Recursively(pRoot-m_pRight);
+	
+	// 先序遍历，根有子节点--->交换它们
+	TreeNode* right = pRoot->m_pRight;
+	pRoot->m_pRight = pRoot->m_pLeft;
+	pRoot->m_pLeft = right;
+	
+	// 左
+	if(pRoot->m_pLeft)
+		mirrorTree_Recursively(pRoot->m_pLeft);
+		
+	// 右
+	if(pRoot->m_pRight)
+		mirrorTree_Recursively(pRoot->m_pRight);
 }
