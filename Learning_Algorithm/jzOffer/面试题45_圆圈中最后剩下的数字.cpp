@@ -28,9 +28,9 @@ int getLastNumber(int n, int m)
 	std::list<int>::iterator current = numbersList.begin();
 	// #1
 	while (numbersList.size() > 1) {
-		for (int i = 1; i < m; ++i) {
+		for (int i = 1; i < m; ++i) {// 走m-1步找到要删除节点的位置（迭代器）
 			++current;
-			if (current == numbersList.end())
+			if (current == numbersList.end())// 当前迭代器current每向前走一步，就需要判断是否到达end()
 				current = numbersList.begin();
 		}
 

@@ -16,8 +16,8 @@ int add(int a, int b)
 
 	int sum, carry;
 	do {
-		sum = a^b;
-		carry = (a&b) << 1;
+		sum = a^b;// 异或运算 不进位
+		carry = (a&b) << 1;// 相同且都为1才会进位，那么可以a&b计算进位的位置，然后左移1个单位，进行进位
 
 		a = sum;
 		b = carry;
